@@ -102,3 +102,12 @@ dist
 
 # TernJS port file
 .tern-port
+
+# MacOS
+.DS_Store
+
+#ignore .eslintrc.json and .eslintignore
+.eslint*
+
+#Prettier
+.prettier*
