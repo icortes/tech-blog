@@ -1,10 +1,9 @@
 {{#each blogPosts as |blogPost|}}
 <div class="card">
-  <h5 class="card-header">Featured</h5>
+  <h5 class="card-header">{{title}}</h5>
   <div class="card-body">
-    <h5 class="card-title">Special title treatment</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <p class="card-text">{{content}}</p>
   </div>
+  <div class="card-footer text-muted">Posted by {{user.name}} on {{format_date date_created}}</div>
 </div>
 {{/each}}
