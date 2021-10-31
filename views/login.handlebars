@@ -1,27 +1,30 @@
 <div class='row'>
   <div class='col col-6'>
-
+    <h2>Login</h2>
     <div class='form-group'>
       <label for='signInEmail'>Email address</label>
       <input type='email' class='form-control' id='signInEmail' />
     </div>
 
     <div class='form-group'>
-      <label for='inputPassword'>Password</label>
+      <label for='signInPassword'>Password</label>
       <input
         type='password'
         class='form-control'
-        id='inputPassword'
+        id='signInPassword'
         aria-describedby='passwordHelp'
       />
       <small id='passwordHelp' class='text-muted'>
         Must be at least 8 characters long.
       </small>
     </div>
-    <button type='submit' class='btn btn-primary'>Submit</button>
+    <div class='form-group'>
+      <button type='submit' class='btn btn-primary'>Submit</button>
+    </div>
   </div>
 
   <div class='col col-6'>
+    <h2>Sign Up</h2>
     <form>
       <div class='form-group'>
         <label for='signUpEmail'>Email address</label>
@@ -60,7 +63,9 @@
           Must be at least 8 characters long.
         </small>
       </div>
-      <button type='submit' class='btn btn-primary'>Submit</button>
+      <div class='form-group'>
+        <button type='submit' class='btn btn-primary'>Submit</button>
+      </div>
     </form>
   </div>
 </div>
