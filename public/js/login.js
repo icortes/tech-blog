@@ -11,7 +11,7 @@ const loginEventHandler = async (event) => {
       headers: { 'Content-Type': 'application/json' }
     });
 
-    response.ok ? document.location.replace('/') : alert(response.statusText);
+    response.ok ? document.location.replace('/') : alert(response.statusText + '\nEmail or Password not found!');
   }
 };
 
@@ -33,6 +33,5 @@ const signUpHandler = async (event) => {
   }
 };
 
-console.log(document.querySelector('.singin-form'));
 document.querySelector('#signin-form').addEventListener('submit', loginEventHandler);
 document.querySelector('.signup-form').addEventListener('submit', signUpHandler);
