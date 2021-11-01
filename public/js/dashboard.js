@@ -18,23 +18,45 @@ const newPostHandler = async (event) => {
 };
 
 const deleteButtonHandler = async (event) => {
-
+  event.preventDefault();
   if (event.target.hasAttribute('data-id')) {
     const id = event.target.getAttribute('data-id');
     console.log(id);
     const response = await fetch(`/api/blogpost/${id}`, {
       method: 'DELETE'
     });
-    
-    response.ok
-      ? document.location.replace('/dashboard')
-      : alert('Failed to delete post');
+
+    // response.ok
+    //   ? document.location.replace('/dashboard')
+    //   : alert('Failed to delete post');
+  }
+};
+
+const editButtonHandler = async (event) => {
+  event.preventDefault();
+  console.log(document.querySelector('.post-submit'));
+  try {
+    if (event.target.hasAttribute('data-id')) {
+      const id = event.target.getAttribute('data-id');
+      console.log(id);
+      const response = await fetch(`/api/blogpost/${id}`, {
+        method: 'GET'
+      });
+
+      console.log(response);
+    }
+  } catch (error) {
+    console.log(error);
   }
 };
 
 document
   .querySelector('.post-submit')
   .addEventListener('submit', newPostHandler);
+
+document
+  .querySelector('.editButton')
+  .addEventListener('click', editButtonHandler);
 
 document
   .querySelector('.my-blogposts')

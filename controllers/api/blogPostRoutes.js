@@ -14,6 +14,17 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
+router.get('/:id', withAuth, async (req, res) => {
+  try {
+    const blogData = await BlogPost.findOne({where: {id: req.params.id}});
+    const blog = await blogData.get({ plain });
+    console.log(blog);
+    res.status(200).json(blog);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
 router.delete('/:id', withAuth, async (req, res) => {
   try {
     const blogData = await BlogPost.destroy({

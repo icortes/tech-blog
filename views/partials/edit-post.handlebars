@@ -1,0 +1,53 @@
+<button
+      type='button'
+      class='editButton btn btn-warning float-right'
+      data-id='{{id}}'
+      data-toggle='modal'
+      data-target='#edit-post'
+    ><i class="bi bi-wrench"></i></button>
+
+    <!-- Modal -->
+    <div
+      class='modal fade'
+      id='edit-post'
+      data-backdrop='static'
+      data-keyboard='false'
+      tabindex='-1'
+      aria-labelledby='editpostlabel'
+      aria-hidden='true'
+    >
+      <div class='modal-dialog'>
+        <div class='modal-content'>
+          <div class='modal-header'>
+            <h5 class='modal-title' id='editpostlabel'>Edit Post</h5>
+            <button
+              type='button'
+              class='close'
+              data-dismiss='modal'
+              aria-label='Close'
+            >
+              <span aria-hidden='true'>&times;</span>
+            </button>
+          </div>
+          <div class='modal-body'>
+            <form class='form post-edit'>
+              <div class='form-group'>
+                <label for='title-edit'>Title:</label>
+                <input type='text' class='form-control' id='title-edit' />
+              </div>
+
+              <div class='form-group'>
+                <label for='text-area-input'>Content:</label>
+                <textarea
+                  class='form-control'
+                  id='text-area-input'
+                  rows='3'
+                ></textarea>
+              </div>
+              <button type='submit' class='btn btn-primary'>Submit</button>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
