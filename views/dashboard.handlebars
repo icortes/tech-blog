@@ -1,26 +1,95 @@
 <div class='row'>
-  <div class='col col-auto'>
+  <div class='col col-10'>
     <h2>Welcome {{name}}!</h2>
+  </div>
+
+  <div class='col col-2'>
+
+    <button
+      type='button'
+      class='btn btn-primary'
+      data-toggle='modal'
+      data-target='#staticBackdrop'
+    ><i class='bi bi-clipboard-plus'></i> New Post</button>
+
+    <!-- Modal -->
+    <div
+      class='modal fade'
+      id='staticBackdrop'
+      data-backdrop='static'
+      data-keyboard='false'
+      tabindex='-1'
+      aria-labelledby='staticBackdropLabel'
+      aria-hidden='true'
+    >
+      <div class='modal-dialog'>
+        <div class='modal-content'>
+          <div class='modal-header'>
+            <h5 class='modal-title' id='staticBackdropLabel'>New Post</h5>
+            <button
+              type='button'
+              class='close'
+              data-dismiss='modal'
+              aria-label='Close'
+            >
+              <span aria-hidden='true'>&times;</span>
+            </button>
+          </div>
+          <div class='modal-body'>
+            <form class='form post-submit'>
+              <div class='form-group'>
+                <label for='title-input'>Title:</label>
+                <input type='text' class='form-control' id='title-input' />
+              </div>
+
+              <div class='form-group'>
+                <label for='text-area-input'>Content:</label>
+                <textarea
+                  class='form-control'
+                  id='text-area-input'
+                  rows='3'
+                ></textarea>
+              </div>
+              <button type='submit' class='btn btn-primary'>Submit</button>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
 
 <div class='row'>
-  <div class='col col-md-6'>
-    <h4>Create a New Post:</h4>
+  <div class='col col-2'></div>
+  <div class='col col-8'>
+    {{#if blog_posts.length}}
+      <h3>My Posts:</h3>
 
-    <form class="form post-submit">
-      <div class='form-group'>
-        <label for='title-input'>Title:</label>
-        <input type='text' class='form-control' id='title-input' />
-      </div>
+      {{#each blog_posts as |blogpost|}}
+        <div class='card'>
+          <h5 class='card-header'>
 
-      <div class='form-group'>
-        <label for='text-area-input'>Content:</label>
-        <textarea class='form-control' id='text-area-input' rows='3'></textarea>
-      </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+            <a href='/blogpost/{{id}}'>{{title}}</a>
+            <button
+              type='button'
+              data-id='{{id}}'
+              class='btn btn-secondary float-right'
+            ><i class='bi bi-trash'></i></button></h5>
+          <div class='card-body'>
+            <p class='card-text'>{{content}}</p>
+          </div>
+          <div class='card-footer text-muted'>Posted by
+            {{user.name}}
+            on
+            {{format_date date_created}}</div>
+        </div>
+      {{/each}}
+    {{/if}}
   </div>
+  <div class='col col-2'></div>
+
 </div>
 
-<script src="./js/dashboard.js"></script>
+<script src='./js/dashboard.js'></script>
