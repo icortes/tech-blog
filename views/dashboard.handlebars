@@ -1,13 +1,13 @@
 <div class='row'>
-  <div class='col col-10'>
+  <div class='col'>
     <h2>Welcome {{name}}!</h2>
   </div>
 
-  <div class='col col-2'>
+  <div class='col'>
 
     <button
       type='button'
-      class='btn btn-primary'
+      class='btn btn-primary float-right'
       data-toggle='modal'
       data-target='#staticBackdrop'
     ><i class='bi bi-clipboard-plus'></i> New Post</button>
@@ -62,8 +62,7 @@
 </div>
 
 <div class='row'>
-  <div class='col col-2'></div>
-  <div class='col col-8'>
+  <div class='col my-blogposts'>
     {{#if blog_posts.length}}
       <h3>My Posts:</h3>
 
@@ -88,7 +87,6 @@
       {{/each}}
     {{/if}}
   </div>
-  <div class='col col-2'></div>
 
 </div>
 

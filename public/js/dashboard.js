@@ -11,8 +11,31 @@ const newPostHandler = async (event) => {
       headers: { 'Content-Type': 'application/json' }
     });
 
-    response.ok ? document.location.replace('/dashboard') : alert('Failed to create blog post.')
+    response.ok
+      ? document.location.replace('/dashboard')
+      : alert('Failed to create blog post.');
   }
 };
 
-document.querySelector('.post-submit').addEventListener('submit', newPostHandler);
+const deleteButtonHandler = async (event) => {
+
+  if (event.target.hasAttribute('data-id')) {
+    const id = event.target.getAttribute('data-id');
+    console.log(id);
+    const response = await fetch(`/api/blogpost/${id}`, {
+      method: 'DELETE'
+    });
+    
+    response.ok
+      ? document.location.replace('/dashboard')
+      : alert('Failed to delete post');
+  }
+};
+
+document
+  .querySelector('.post-submit')
+  .addEventListener('submit', newPostHandler);
+
+document
+  .querySelector('.my-blogposts')
+  .addEventListener('click', deleteButtonHandler);
