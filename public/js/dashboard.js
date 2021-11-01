@@ -26,15 +26,14 @@ const deleteButtonHandler = async (event) => {
       method: 'DELETE'
     });
 
-    // response.ok
-    //   ? document.location.replace('/dashboard')
-    //   : alert('Failed to delete post');
+    response.ok
+      ? document.location.replace('/dashboard')
+      : alert('Failed to delete post');
   }
 };
 
 const editButtonHandler = async (event) => {
   event.preventDefault();
-  console.log(document.querySelector('.post-submit'));
   try {
     if (event.target.hasAttribute('data-id')) {
       const id = event.target.getAttribute('data-id');
@@ -44,6 +43,10 @@ const editButtonHandler = async (event) => {
       });
 
       console.log(response);
+      
+      response.ok
+      ? document.location.replace('/dashboard')
+      : alert('Failed to edit post');
     }
   } catch (error) {
     console.log(error);

@@ -16,7 +16,12 @@ router.post('/', withAuth, async (req, res) => {
 
 router.get('/:id', withAuth, async (req, res) => {
   try {
-    const blogData = await BlogPost.findOne({where: {id: req.params.id}});
+    const blogData = await BlogPost.findByPk(req.params.id, {
+      include: [
+        { model: Comment, include: [{ model: User, attributes: ['name'] }] },
+        { model: User, attributes: ['name'] }
+      ]
+    });
     const blog = await blogData.get({ plain });
     console.log(blog);
     res.status(200).json(blog);
