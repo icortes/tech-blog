@@ -1,0 +1,41 @@
+<div class='row'>
+  <div class='col'>
+    <div class='card'>
+      <h5 class='card-header'>{{title}}</h5>
+      <div class='card-body'>
+        <p class='card-text'>{{content}}</p>
+      </div>
+      <div class='card-footer text-muted'>Posted by
+        {{user.name}}
+        on
+        {{format_date date_created}}</div>
+    </div>
+  </div>
+</div>
+
+<div class='row'>
+  <div class='col'>
+    {{#if comments.length}}
+      <h3>Comments:</h3>
+      {{#each comments as |comment|}}
+      {{comment.content}}
+      {{/each}}
+    {{/if}}
+  </div>
+  <div class='col col-2'></div>
+
+</div>
+
+<div class='row'>
+  <div class='col'>
+    <form class='form new-comment-form'>
+      <div class='form-group'>
+        <label for='new-comment'>New Comment:</label>
+        <textarea class='form-control' id='new-comment' rows='3'></textarea>
+      </div>
+      <button type='submit' class='btn btn-primary'>Submit</button>
+    </form>
+  </div>
+</div>
+
+<script src="/js/blogpost.js"></script>
